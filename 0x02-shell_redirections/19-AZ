@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "AccePt" | tr 'Ac' 'Ze'
+echo -n "YourInputString" | sed 's/A/Z/g; s/c/e/g'
