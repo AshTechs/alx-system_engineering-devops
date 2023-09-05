@@ -1,2 +1,2 @@
 #!/bin/bash
-IFS=: read -ra p <<< "$PATH"; echo "Number of directories in PATH: ${#p[@]}"
+echo $((` echo $PATH | grep -o ":/" | wc -1 ` +1))
