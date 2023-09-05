@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -empty | rev | cut -d '/' -f 1 | rev
+find . -type f -iname "*.gif" -exec basename {} \; | awk -F. '{print $1}' | sort -f
