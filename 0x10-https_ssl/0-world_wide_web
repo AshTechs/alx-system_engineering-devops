@@ -3,18 +3,7 @@
 
 print_domain_subdomain () {
 	# Execute the 'dig' cmd to perform DNS lookup for the provided domain
-    dig "$1" |
-
-        # Use 'grep' to search for the 'ANSWER SECTION' in the output of 'dig'
-	grep -A1 'ANSWER SECTION:' |
-
-	# Use 'sed' to replace occurrences of domain name with subdomain name
-	sed -r "s/$1./$2/g" |
-
-        # Use 'awk' to parse and print the information from the 'dig' output
-	awk -F" " ' NR==2 {
-		print "The subdomain " $1 " is a " $4 " record
-		and points to " $5 }'
+    dig "$1" | grep -A1 'ANSWER SECTION:' |sed -r "s/$1./$2/g" | awk -F" " ' NR==2 { print "The subdomain " $1 " is a " $4 " record and points to " $5 }'
 }
 
 # Check the number of command-line arguments.
