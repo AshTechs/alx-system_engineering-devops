@@ -22,8 +22,3 @@ selboolean { 'httpd_can_network_connect_db':
 selmodule { 'httpd_can_network_connect':
   ensure => 'present',
 }
-
-# Ensure Apache error log file has proper ownership
-seltype { 'httpd_t':
-  ensure => 'present',
-}
