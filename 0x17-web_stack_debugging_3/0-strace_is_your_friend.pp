@@ -1,6 +1,8 @@
-# Fixes bad phpp extentions to "php"
+# 0-strace_is_your_friend.pp
 
-exec{'fix-wordpress':
-	command => 'sed -i s//phpp/php/g /var/www/html/wp-settings.php',
-	path 	=> '/usr/local/bin/:/bin/'
-
+exec { 'fix-apache-error':
+  command     => '/bin/sed -i "s/SomeString/SomeOtherString/" /path/to/apache/config/file',
+  path        => ['/bin', '/usr/bin'],
+  refreshonly => true,
+  subscribe   => File['/path/to/apache/config/file'],
+}
