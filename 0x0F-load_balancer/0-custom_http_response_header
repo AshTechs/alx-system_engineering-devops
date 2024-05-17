@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# duplicate web-01 to web-02
-# these scripts are an upgrade from the web-server scripts...
+# Duplicate web-01 to web-02
+# These scripts are an upgrade from the web-server scripts...
 
+#set -x
 
 echo -e "Updating and doing some minor checks...\n"
 
@@ -72,7 +73,7 @@ server_config=\
 		}
 }"
 
-# shellcheck disable=SC2154
+#shellcheck disable=SC2154
 echo "$server_config" | sudo dd status=none of=/etc/nginx/sites-enabled/default
 
 if [ "$(pgrep -c nginx)" -le 0 ]; then
